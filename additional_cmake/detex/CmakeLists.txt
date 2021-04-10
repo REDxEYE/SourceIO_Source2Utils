@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.15)
+project(Detex)
+
+set(CMAKE_C_STANDARD 11)
+message("DETEX")
+
+add_library(Detex STATIC
+        libs/detex/bits.c
+        libs/detex/bptc-tables.c
+        libs/detex/division-tables.c
+        libs/detex/clamp.c
+
+        libs/detex/decompress-bc.c
+        libs/detex/decompress-bptc.c
+        libs/detex/decompress-bptc-float.c
+        libs/detex/decompress-eac.c
+        libs/detex/decompress-etc.c
+        libs/detex/decompress-rgtc.c
+
+        libs/detex/file-info.c
+        libs/detex/half-float.c
+        libs/detex/hdr.c
+        libs/detex/ktx.c
+        libs/detex/misc.c
+#        libs/detex/png.c
+        libs/detex/raw.c
+        libs/detex/dds.c
+
+        libs/detex/texture.c
+        libs/detex/convert.c
+
+        )
+target_compile_options(Detex PRIVATE -Ofast -fPIC)
+target_link_libraries(Detex PUBLIC -Wl,-Bstatic -Wl,-Bdynamic)
